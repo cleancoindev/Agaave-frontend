@@ -11,6 +11,7 @@ const getBalance = async (address, assetName, aToken) => {
         return new Promise((resolve, reject) => {
             contractInstance.methods.balanceOf(address).call({ from: address }, (err, res) => {
                 if (err) reject(err);
+                console.log(res);
                 let balance = parseInt(web3.utils.fromWei(res, 'ether')).toFixed(4);
                 resolve(balance)
             });

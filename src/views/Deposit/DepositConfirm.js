@@ -190,28 +190,29 @@ function DepositConfirm({ match, history }) {
     return getBalance(address, match.params.assetName)
   })
   const [pendingApproval, setPendingApproval] = useState(false);
-  
-  
-  useEffect(async () => {
-  
-    let approved = await checkApproved(address, match.params.assetName);
-    const config = await userConfig(address);
-    console.log(config);
-    const assetData = await getReserveData(address, match.params.assetName);
-    console.log(assetData);
-    if (match.params && match.params.assetName) {
-      setAsset(marketData.find(item => item.name === match.params.assetName));
-    }
 
-    if (match.params && match.params.amount) {
-      setAmount(match.params.amount);
-    }
-    
-    approved = web3.utils.fromWei(approved, 'ether');
 
-    if(approved > balance){
-      setStep(2)
-    }
+  useEffect(() => {
+    (async () => {
+      let approved = await checkApproved(address, match.params.assetName);
+      const config = await userConfig(address);
+      console.log(config);
+      const assetData = await getReserveData(address, match.params.assetName);
+      console.log(assetData);
+      if (match.params && match.params.assetName) {
+        setAsset(marketData.find(item => item.name === match.params.assetName));
+      }
+
+      if (match.params && match.params.amount) {
+        setAmount(match.params.amount);
+      }
+
+      approved = web3.utils.fromWei(approved, 'ether');
+
+      if (approved > balance) {
+        setStep(2)
+      }
+    })();
   }, [match]);
 
   const approveFn = async (userAddress) => {

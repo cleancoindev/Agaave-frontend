@@ -9,7 +9,6 @@ import { marketData } from '../../utils/constants';
 import WithdrawOverview from './WithdrawOverview';
 import userAccount from '../../utils/contracts/userAccountData';
 import { useSelector } from 'react-redux';
-import { web3 } from '../../utils/web3';
 import reserveData from '../../utils/contracts/reserveData';
 import getBalance from '../../utils/contracts/getBalance';
 

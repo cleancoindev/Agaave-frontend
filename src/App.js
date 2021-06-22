@@ -19,6 +19,7 @@ import RepayDetail from './views/Repay/RepayDetail';
 import RepayConfirm from './views/Repay/RepayConfirm';
 import Collateral from './views/Collateral';
 import InterestSwap from './views/InterestSwap';
+import Nfts from './views/Nfts';
 import { providerUrl, Web3 } from "./utils/web3";
 import 'react-notifications/lib/notifications.css';
 import theme from './theme';
@@ -105,6 +106,7 @@ class App extends Component {
               <Route path="/reserve-overview/:assetName" component={ReserveOverview} exact />
               <Route path="/dashboard" component={Dashboard} exact />
               <Route path="/deposit" component={Deposit} exact />
+              <Route path="/nfts" component={Nfts} exact />
               <Route path="/deposit/:assetName" component={DepositDetail} exact />
               <Route path="/deposit/confirm/:assetName/:amount" component={DepositConfirm} exact />
               <Route path="/borrow" component={Borrow} exact />
